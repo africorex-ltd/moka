@@ -85,7 +85,7 @@ export default async function HerdPage() {
   )
 }
 
-function Th({ children }: { children: React.ReactNode }) {
+function Th({ children }: { children?: React.ReactNode }) {
   return <th className="px-5 py-3 text-left text-xs font-semibold text-moka-700 uppercase tracking-wide">{children}</th>
 }
 

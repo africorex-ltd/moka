@@ -1,13 +1,20 @@
-import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import SignOutButton from './SignOutButton'
+import { NavLink } from './NavLink'
 
 const NAV = [
   { href: '/dashboard', label: 'Overview', icon: '⊞' },
   { href: '/dashboard/herd', label: 'Herd', icon: '🐄' },
-  { href: '/dashboard/milk', label: 'Milk Records', icon: '🥛' },
+  { href: '/dashboard/calves', label: 'Calves', icon: '🐮' },
+  { href: '/dashboard/milk', label: 'Milk Log', icon: '🥛' },
+  { href: '/dashboard/sales', label: 'Sales', icon: '💰' },
+  { href: '/dashboard/health', label: 'Health', icon: '💊' },
+  { href: '/dashboard/feeding', label: 'Feeding', icon: '🌾' },
+  { href: '/dashboard/breeding', label: 'Breeding', icon: '🔄' },
+  { href: '/dashboard/costs', label: 'Costs', icon: '💸' },
   { href: '/dashboard/reports', label: 'Reports', icon: '📊' },
+  { href: '/dashboard/profile', label: 'Profile', icon: '⚙️' },
 ]
 
 function MokaLogo() {
@@ -51,16 +58,9 @@ export default async function DashboardLayout({ children }: { children: React.Re
         </div>
 
         {/* Nav */}
-        <nav className="flex-1 px-3 py-4 space-y-1">
+        <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
           {NAV.map(({ href, label, icon }) => (
-            <Link
-              key={href}
-              href={href}
-              className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-moka-200 hover:bg-moka-800 hover:text-white transition-colors text-sm font-medium"
-            >
-              <span className="text-base w-5 text-center">{icon}</span>
-              {label}
-            </Link>
+            <NavLink key={href} href={href} label={label} icon={icon} />
           ))}
         </nav>
 
